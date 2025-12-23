@@ -524,7 +524,7 @@ elif mission == "OP: HUNTER (Matched)":
         sig = signal.chirp(np.linspace(0, 1, L_sig), f0=1, f1=10, t1=1, method='linear')
     elif target_shape == "Gaussian (Radar)":
         # sig = signal.gaussian(L_sig, std=10)
-        sig = signal.gaussian.windows(L_sig, std=10)
+        sig = signal.windows.gaussian(L_sig, std=10)
     else:
         sig = np.ones(L_sig)
         
