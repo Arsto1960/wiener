@@ -449,7 +449,7 @@ with st.sidebar:
 # MISSION 1: OPERATION CLARITY (Wiener Filter)
 # ==============================================================================
 if mission == "OP: CLARITY (Wiener)":
-    st.header("Operation CLARITY: Signal Restoration")
+    st.header("Signal Restoration")
     st.markdown("""
     **Briefing:** We have intercepted a corrupted transmission. 
     **Objective:** Configure the **Wiener Filter** to minimize Mean Squared Error (MSE) and recover the intelligence.
@@ -525,7 +525,7 @@ if mission == "OP: CLARITY (Wiener)":
 # MISSION 2: OPERATION HUNTER (Matched Filter)
 # ==============================================================================
 elif mission == "OP: HUNTER (Matched)":
-    st.header("Operation HUNTER: Target Detection")
+    st.header("Target Detection")
     st.markdown("""
     **Briefing:** A stealth target is hidden somewhere in the noise floor. 
     **Objective:** Use the **Matched Filter** to maximize SNR and identify the target's location index.
@@ -614,7 +614,7 @@ elif mission == "OP: HUNTER (Matched)":
 # MISSION 3: OPERATION ORACLE (Prediction)
 # ==============================================================================
 elif mission == "OP: ORACLE (Prediction)":
-    st.header("Operation ORACLE: Future Prediction")
+    st.header("Future Prediction")
     st.markdown("""
     **Briefing:** We need to predict the next steps of a chaotic system to prevent failure.
     **Objective:** Use **Linear Predictive Coding (LPC)** to predict samples $x[n]$ based on past $p$ samples.
@@ -703,8 +703,8 @@ elif mission == "OP: ORACLE (Prediction)":
     with st.expander("📂 Mission Intel: How LPC Works"):
         st.markdown(r"""
         **Linear Prediction:**
-#         We assume the current sample is a linear combination of past samples:
-#         $$ \hat{x}(n) = \sum_{k=1}^{p} a_k x(n-k) $$
+        We assume the current sample is a linear combination of past samples:
+        $$ \hat{x}(n) = \sum_{k=1}^{p} a_k x(n-k) $$
         
-#         The coefficients $a_k$ are found by matching the autocorrelation of the predictor to the signal. This is why it works well for speech and AR processes.
-#         """)
+        The coefficients $a_k$ are found by matching the autocorrelation of the predictor to the signal. This is why it works well for speech and AR processes.
+        """)
