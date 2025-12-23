@@ -506,7 +506,7 @@ elif mission == "OP: HUNTER (Matched)":
     
     with col_game:
         st.subheader("Sonar Settings")
-        target_shape = st.selectbox("Target Signature", ["Chirp (Sonar)", "Gaussian (Radar)", "Rect (Pulse)"])
+        target_shape = st.selectbox("Target Signature", ["Rect (Pulse)", "Gaussian (Radar)", "Chirp (Sonar)"])
         noise_pwr = st.slider("Atmospheric Noise", 0.5, 3.0, 1.0)
         
         if 'target_loc' not in st.session_state: st.session_state['target_loc'] = 150
