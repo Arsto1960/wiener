@@ -54,19 +54,19 @@ themes = {
 # --- Sidebar "Mission Control" ---
 with st.sidebar:
     st.title("📡 OPS CENTER")
-    
-    # Theme Selector
-    st.subheader("🖥️ Interface Theme")
-    selected_theme_name = st.selectbox("Select Scene:", list(themes.keys()), index=0)
-    current_theme = themes[selected_theme_name]
-    
-    st.divider()
-    st.markdown("### 🚀 Mission Select")
+
+    st.markdown("### Select Mission:")
     mission = st.radio(
         "",
-        ["OP: CLARITY (Wiener)", "OP: HUNTER (Matched)", "OP: ORACLE (Prediction)"],
+        ["OP: HUNTER (Matched)", "OP: CLARITY (Wiener)", "OP: ORACLE (Prediction)"],
         index=0
     )
+
+    st.divider()
+    # Theme Selector
+    # st.subheader("🖥️ Interface Theme")
+    selected_theme_name = st.selectbox("Select Scene:", list(themes.keys()), index=0)
+    current_theme = themes[selected_theme_name]
 
 # --- Inject CSS Dynamic Variables ---
 st.markdown(f"""
@@ -163,6 +163,10 @@ def generate_ar_signal(n_samples):
 # ==============================================================================
 if mission == "OP: CLARITY (Wiener)":
     st.header("Signal Restoration")
+    st.markdown("""
+        **Briefing:** We have intercepted a corrupted transmission. 
+        **Objective:** Configure the **Wiener Filter** to minimize Mean Squared Error (MSE) and recover the intelligence.
+        """)
     
     col_ctrl, col_vis = st.columns([1, 3])
     
@@ -173,6 +177,9 @@ if mission == "OP: CLARITY (Wiener)":
         
         noise_map = {"Low": 0.1, "Medium": 0.4, "High": 0.8, "Critical": 1.5}
         noise_std = noise_map[snr_setting]
+
+        if st.button("🔄 New Transmission"):
+            st.session_state['noise_seed'] = np.random.randint(0, 1000)
     
     # Simulation
     t = np.linspace(0, 1, 500)
@@ -203,6 +210,14 @@ if mission == "OP: CLARITY (Wiener)":
         
         apply_theme_to_plot(fig, ax, current_theme)
         st.pyplot(fig)
+
+        with st.expander("📂 Access Technical Schematics"):
+            st.markdown(r"""
+            **Wiener Filter Logic:**
+            The filter coefficients $\mathbf{h}$ are calculated by solving the Wiener-Hopf equation:
+            $$ \mathbf{h} = \mathbf{R}_{yy}^{-1} \mathbf{r}_{yx} $$
+            This finds the mathematically optimal filter that separates the signal from the noise based on their statistical correlation.
+            """)
 
 # ==============================================================================
 # MISSION 2: OPERATION HUNTER (Matched Filter)
