@@ -82,7 +82,7 @@ with st.sidebar:
     
     mission = st.radio(
         "",
-        ["OP: CLARITY (Wiener)", "OP: HUNTER (Matched)", "OP: ORACLE (Prediction)"],
+        ["OP: HUNTER (Matched)", "OP: CLARITY (Wiener)", "OP: ORACLE (Prediction)"],
         index=0
     )
     
