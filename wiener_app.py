@@ -162,12 +162,12 @@ def generate_ar_signal(n_samples):
 # MISSION 1: OPERATION CLARITY (Wiener Filter)
 # ==============================================================================
 if mission == "OP: CLARITY (Wiener)":
-    st.header("Operation CLARITY: Signal Restoration")
+    st.header("Signal Restoration")
     
     col_ctrl, col_vis = st.columns([1, 3])
     
     with col_ctrl:
-        st.subheader("Filter Params")
+        # st.subheader("Filter Params")
         L_taps = st.number_input("Filter Taps (L)", 2, 100, 15)
         snr_setting = st.select_slider("Jamming Level (Noise)", options=["Low", "Medium", "High", "Critical"])
         
@@ -208,7 +208,7 @@ if mission == "OP: CLARITY (Wiener)":
 # MISSION 2: OPERATION HUNTER (Matched Filter)
 # ==============================================================================
 elif mission == "OP: HUNTER (Matched)":
-    st.header("Operation HUNTER: Target Detection")
+    st.header("Target Detection")
     
     col_game, col_radar = st.columns([1, 2])
     
@@ -269,7 +269,7 @@ elif mission == "OP: HUNTER (Matched)":
 # MISSION 3: OPERATION ORACLE (Prediction)
 # ==============================================================================
 elif mission == "OP: ORACLE (Prediction)":
-    st.header("Operation ORACLE: Future Prediction")
+    st.header("Future Prediction")
     
     col_p1, col_p2 = st.columns([1, 2])
     
@@ -315,7 +315,14 @@ elif mission == "OP: ORACLE (Prediction)":
             
         except:
             st.error("Matrix Singularity. Try adjusting parameters.")
-
+        with st.expander("📂 Mission Intel: How LPC Works"):
+            st.markdown(r"""
+            **Linear Prediction:**
+            We assume the current sample is a linear combination of past samples:
+            $$ \hat{x}(n) = \sum_{k=1}^{p} a_k x(n-k) $$
+        
+            The coefficients $a_k$ are found by matching the autocorrelation of the predictor to the signal. This is why it works well for speech and AR processes.
+            """)
 
 
 
