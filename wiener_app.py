@@ -163,10 +163,11 @@ def generate_ar_signal(n_samples):
 # ==============================================================================
 if mission == "OP: CLARITY (Wiener)":
     st.header("Signal Restoration")
-    st.markdown("""
-        **Briefing:** We have intercepted a corrupted transmission. 
-        **Objective:** Configure the **Wiener Filter** to minimize Mean Squared Error (MSE) and recover the intelligence.
-        """)
+    with st.expander("📢 **Briefing:**"):
+        st.markdown("""
+            We have intercepted a corrupted transmission. 
+            **Objective:** Configure the **Wiener Filter** to minimize Mean Squared Error (MSE) and recover the intelligence.
+            """)
     
     col_ctrl, col_vis = st.columns([1, 3])
     
