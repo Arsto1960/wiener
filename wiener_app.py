@@ -225,6 +225,11 @@ if mission == "OP: CLARITY (Wiener)":
 # ==============================================================================
 elif mission == "OP: HUNTER (Matched)":
     st.header("Target Detection")
+    with st.expander("📢 **Briefing:**"):
+        st.markdown("""
+        A stealth target is hidden somewhere in the noise floor. 
+        **Objective:** Use the **Matched Filter** to maximize SNR and identify the target's location index.
+        """)
     
     col_game, col_radar = st.columns([1, 2])
     
@@ -238,6 +243,7 @@ elif mission == "OP: HUNTER (Matched)":
             
     # Simulation
     N = 500
+    t = np.linspace(0, 1, N)
     L_sig = 60
     if target_shape == "Chirp (Sonar)":
         sig = signal.chirp(np.linspace(0, 1, L_sig), f0=1, f1=10, t1=1, method='linear')
@@ -265,7 +271,7 @@ elif mission == "OP: HUNTER (Matched)":
         
         # 2. Matched Filter Output
         ax2.plot(detection_score, color=current_theme['accent'], lw=1.5)
-        ax2.set_title("Matched Filter Output (Correlation Energy)")
+        ax2.set_title("Matched Filter Output")
         
         # Draw Peak
         peak_val = np.max(np.abs(detection_score))
