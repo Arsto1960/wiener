@@ -95,13 +95,13 @@ if "Restoration" in mission:
     with st.container(border=True):
         c1, c2, c3 = st.columns([1, 2, 1])
         with c1:
-            st.markdown("### 🎚️ Noise Level")
+            # st.markdown("### 🎚️ Noise Level")
             noise_amp = st.slider("Interference", 0.0, 2.0, 0.5)
         with c2:
-            st.markdown("### 🎛️ Filter Config")
+            # st.markdown("### 🎛️ Filter Config")
             L_wiener = st.slider("Filter Taps (Complexity)", 2, 100, 20)
         with c3:
-            st.markdown("### 📊 Signal")
+            # st.markdown("### 📊 Signal")
             sig_freq = st.number_input("Base Freq (Hz)", 10, 100, 20)
 
     # --- Simulation ---
