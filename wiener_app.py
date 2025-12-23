@@ -271,11 +271,11 @@ elif mission == "OP: ORACLE (Prediction)":
     col_p1, col_p2 = st.columns([1, 2])
     
     with col_p1:
-        st.subheader("Predictor Config")
+        # st.subheader("Predictor Config")
         p_order = st.slider("Prediction Order (Past Samples used)", 1, 20, 5)
         horizon = st.slider("Forecast Horizon (Samples)", 10, 100, 50)
         
-        st.markdown("---")
+        # st.markdown("---")
         st.write("System: AR(2) Process")
         st.caption("$x[n] = 0.75x[n-1] - 0.5x[n-2] + noise$")
         
